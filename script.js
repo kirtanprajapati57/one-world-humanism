@@ -1,90 +1,278 @@
-// Mobile navigation
+/* =========================================
+   ONE-WORLD HUMANISM
+   Main JavaScript
+   ========================================= */
+
+
+/* -----------------------------------------
+   MOBILE NAVIGATION
+   ----------------------------------------- */
+
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-
-  if (navLinks.classList.contains("active")) {
-    menuToggle.textContent = "✕";
-  } else {
-    menuToggle.textContent = "☰";
-  }
-});
-
-// Close mobile menu after clicking a link
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    menuToggle.textContent = "☰";
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
   });
-});
 
-// Dark / light mode
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+    });
+  });
+}
+
+
+/* -----------------------------------------
+   DARK / LIGHT MODE
+   ----------------------------------------- */
+
 const themeToggle = document.getElementById("themeToggle");
+
+function updateThemeIcon() {
+  if (!themeToggle) return;
+
+  if (document.body.classList.contains("light")) {
+    themeToggle.textContent = "☾";
+    themeToggle.setAttribute("aria-label", "Switch to dark mode");
+  } else {
+    themeToggle.textContent = "☀";
+    themeToggle.setAttribute("aria-label", "Switch to light mode");
+  }
+}
 
 const savedTheme = localStorage.getItem("owh-theme");
 
-if (savedTheme === "dark") {
-  document.body.classList.add("dark");
-  themeToggle.textContent = "☀";
+if (savedTheme === "light") {
+  document.body.classList.add("light");
 }
 
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+updateThemeIcon();
 
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("owh-theme", "dark");
-    themeToggle.textContent = "☀";
-  } else {
-    localStorage.setItem("owh-theme", "light");
-    themeToggle.textContent = "◐";
-  }
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
 
-// FAQ accordion
-const faqQuestions = document.querySelectorAll(".faq-question");
+    document.body.classList.toggle("light");
 
-faqQuestions.forEach(question => {
-  question.addEventListener("click", () => {
+    const theme = document.body.classList.contains("light")
+      ? "light"
+      : "dark";
 
-    const item = question.parentElement;
+    localStorage.setItem("owh-theme", theme);
 
-    document.querySelectorAll(".faq-item").forEach(otherItem => {
-      if (otherItem !== item) {
-        otherItem.classList.remove("active");
-        otherItem.querySelector(".faq-question span").textContent = "+";
-      }
-    });
-
-    item.classList.toggle("active");
-
-    const symbol = question.querySelector("span");
-
-    if (item.classList.contains("active")) {
-      symbol.textContent = "−";
-    } else {
-      symbol.textContent = "+";
-    }
+    updateThemeIcon();
   });
-});
+}
 
-// Reveal sections when scrolling
-const observer = new IntersectionObserver(
-  entries => {
+
+/* -----------------------------------------
+   NAVBAR ON SCROLL
+   ----------------------------------------- */
+
+const navbar = document.getElementById("navbar");
+
+function updateNavbar() {
+  if (!navbar) return;
+
+  if (window.scrollY > 30) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+}
+
+window.addEventListener("scroll", updateNavbar);
+updateNavbar();
+
+
+/* -----------------------------------------
+   SCROLL REVEAL ANIMATION
+   ----------------------------------------- */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+
     entries.forEach(entry => {
+
       if (entry.isIntersecting) {
+
         entry.target.classList.add("visible");
+
+        observer.unobserve(entry.target);
       }
+
     });
+
   },
   {
     threshold: 0.12
   }
 );
 
-document.querySelectorAll(".card, .principle, .constitution article, .timeline-item")
-  .forEach(element => {
-    element.classList.add("reveal");
-    observer.observe(element);
+revealElements.forEach(element => {
+  revealObserver.observe(element);
+});
+
+
+/* -----------------------------------------
+   FAQ ACCORDION
+   ----------------------------------------- */
+
+const faqQuestions = document.querySelectorAll(".faq-question");
+
+faqQuestions.forEach(question => {
+
+  question.addEventListener("click", () => {
+
+    const currentItem = question.parentElement;
+    const currentAnswer = currentItem.querySelector(".faq-answer");
+
+    document.querySelectorAll(".faq-item").forEach(item => {
+
+      if (item !== currentItem) {
+
+        item.classList.remove("active");
+
+        const answer = item.querySelector(".faq-answer");
+
+        if (answer) {
+          answer.style.maxHeight = null;
+        }
+
+      }
+
+    });
+
+    currentItem.classList.toggle("active");
+
+    if (currentItem.classList.contains("active")) {
+      currentAnswer.style.maxHeight =
+        currentAnswer.scrollHeight + "px";
+    } else {
+      currentAnswer.style.maxHeight = null;
+    }
+
   });
+
+});
+
+
+/* -----------------------------------------
+   BACK TO TOP BUTTON
+   ----------------------------------------- */
+
+const backToTop = document.getElementById("backToTop");
+
+function updateBackToTop() {
+
+  if (!backToTop) return;
+
+  if (window.scrollY > 600) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+
+}
+
+window.addEventListener("scroll", updateBackToTop);
+
+if (backToTop) {
+
+  backToTop.addEventListener("click", () => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  });
+
+}
+
+
+/* -----------------------------------------
+   CURRENT YEAR
+   ----------------------------------------- */
+
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+
+/* -----------------------------------------
+   CLOSE MENU WHEN CLICKING OUTSIDE
+   ----------------------------------------- */
+
+document.addEventListener("click", event => {
+
+  if (!navLinks || !menuToggle) return;
+
+  const clickedInsideMenu =
+    navLinks.contains(event.target);
+
+  const clickedMenuButton =
+    menuToggle.contains(event.target);
+
+  if (
+    navLinks.classList.contains("open") &&
+    !clickedInsideMenu &&
+    !clickedMenuButton
+  ) {
+    navLinks.classList.remove("open");
+  }
+
+});
+
+
+/* -----------------------------------------
+   KEYBOARD ACCESSIBILITY
+   ----------------------------------------- */
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+
+    if (navLinks) {
+      navLinks.classList.remove("open");
+    }
+
+    document.querySelectorAll(".faq-item").forEach(item => {
+
+      item.classList.remove("active");
+
+      const answer = item.querySelector(".faq-answer");
+
+      if (answer) {
+        answer.style.maxHeight = null;
+      }
+
+    });
+
+  }
+
+});
+
+
+/* -----------------------------------------
+   REDUCE ANIMATIONS IF USER PREFERS IT
+   ----------------------------------------- */
+
+const reducedMotion =
+  window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (reducedMotion.matches) {
+
+  document.documentElement.style.scrollBehavior = "auto";
+
+  document.querySelectorAll("*").forEach(element => {
+    element.style.animationDuration = "0.01ms";
+    element.style.transitionDuration = "0.01ms";
+  });
+
+}
