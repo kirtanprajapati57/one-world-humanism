@@ -1,1698 +1,751 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1712">
-
-<title>One-World Humanism</title>
-
-<meta name="description"
-content="One Humanity. One World. One Future. The One-World Humanist Manifesto.">
-
-<style>
-:root{
-  --bg:#f4f6f2;
-  --bg2:#e9eee9;
-  --card:#ffffff;
-  --text:#101914;
-  --muted:#647067;
-  --line:#d8dfd9;
-  --accent:#477a5e;
-  --accent2:#9cc5a8;
-  --dark:#0b1712;
-  --dark2:#10231a;
-  --white:#ffffff;
-  --shadow:0 25px 70px rgba(10,25,18,.10);
-  --radius:24px;
-}
-
-[data-theme="dark"]{
-  --bg:#09110d;
-  --bg2:#0e1b15;
-  --card:#12221a;
-  --text:#edf4ef;
-  --muted:#a3b2a8;
-  --line:#24372c;
-  --accent:#86bd98;
-  --accent2:#b5d9bf;
-  --dark:#050b08;
-  --dark2:#0b1712;
-  --shadow:0 25px 70px rgba(0,0,0,.30);
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-  transition:background .35s,color .35s;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
-
-.container{
-  width:min(91%,1180px);
-  margin:auto;
-}
-
-section{
-  padding:120px 0;
-  scroll-margin-top:80px;
-}
-
-/* ================= NAV ================= */
-
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  background:color-mix(in srgb,var(--bg) 82%,transparent);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
-}
-
-nav{
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:1rem;
-  font-weight:850;
-  letter-spacing:-.04em;
-}
-
-.logo span{
-  color:var(--accent);
-}
-
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-
-.nav-links{
-  display:flex;
-  gap:26px;
-  list-style:none;
-  font-size:.86rem;
-  color:var(--muted);
-}
-
-.nav-links a{
-  transition:.2s;
-}
-
-.nav-links a:hover{
-  color:var(--text);
-}
-
-.theme-btn,
-.menu-btn{
-  width:38px;
-  height:38px;
-  border:1px solid var(--line);
-  background:var(--card);
-  color:var(--text);
-  border-radius:50%;
-  cursor:pointer;
-}
-
-.menu-btn{
-  display:none;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  min-height:100vh;
-  padding-top:76px;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 75% 35%,rgba(126,177,143,.18),transparent 28%),
-    radial-gradient(circle at 15% 75%,rgba(126,177,143,.10),transparent 25%),
-    var(--bg);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  max-width:980px;
-  margin:auto;
-}
-
-.eyebrow{
-  display:inline-block;
-  border:1px solid var(--line);
-  border-radius:100px;
-  padding:8px 15px;
-  color:var(--accent);
-  font-size:.72rem;
-  font-weight:800;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  margin-bottom:28px;
-}
-
-h1{
-  font-size:clamp(4rem,10vw,9rem);
-  line-height:.86;
-  letter-spacing:-.085em;
-  margin-bottom:35px;
-}
-
-h1 span{
-  color:var(--accent);
-}
-
-.hero-subtitle{
-  max-width:720px;
-  margin:auto;
-  color:var(--muted);
-  font-size:clamp(1rem,2vw,1.25rem);
-}
-
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:38px;
-}
-
-.btn{
-  border-radius:100px;
-  padding:13px 22px;
-  font-weight:750;
-  font-size:.88rem;
-  cursor:pointer;
-  border:1px solid var(--line);
-  transition:.25s;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-.btn-primary{
-  background:var(--dark);
-  color:white;
-  border-color:var(--dark);
-}
-
-.btn-secondary{
-  background:var(--card);
-}
-
-.globe{
-  width:310px;
-  height:310px;
-  border:1px solid var(--accent);
-  border-radius:50%;
-  position:absolute;
-  right:8%;
-  top:20%;
-  opacity:.17;
-  animation:float 7s ease-in-out infinite;
-}
-
-.globe:before,
-.globe:after{
-  content:"";
-  position:absolute;
-  inset:15%;
-  border:1px solid var(--accent);
-  border-radius:50%;
-}
-
-.globe:after{
-  inset:0 28%;
-  border-radius:50%;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(0)}
-  50%{transform:translateY(-18px) rotate(4deg)}
-}
-
-/* ================= SECTION HEADINGS ================= */
-
-.section-number{
-  color:var(--accent);
-  font-size:.72rem;
-  font-weight:850;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-
-.section-heading{
-  max-width:750px;
-  margin-bottom:55px;
-}
-
-h2{
-  font-size:clamp(2.5rem,6vw,5rem);
-  line-height:.95;
-  letter-spacing:-.065em;
-  margin-bottom:20px;
-}
-
-.section-heading p{
-  color:var(--muted);
-  font-size:1.05rem;
-}
-
-/* ================= PHILOSOPHY ================= */
-
-.philosophy{
-  background:var(--dark);
-  color:white;
-}
-
-.philosophy-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-}
-
-.philosophy p{
-  color:#aebdb3;
-}
-
-.big-quote{
-  font-size:clamp(1.7rem,4vw,3.4rem);
-  line-height:1.15;
-  letter-spacing:-.045em;
-  border-left:3px solid var(--accent2);
-  padding-left:28px;
-}
-
-/* ================= PRINCIPLES ================= */
-
-.principles-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:32px;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--shadow);
-}
-
-.card-number{
-  color:var(--accent);
-  font-weight:850;
-  font-size:.76rem;
-  letter-spacing:.12em;
-  margin-bottom:20px;
-}
-
-.card h3{
-  font-size:1.45rem;
-  letter-spacing:-.035em;
-  margin-bottom:10px;
-}
-
-.card p{
-  color:var(--muted);
-}
-
-/* ================= PATH ================= */
-
-.path{
-  background:var(--bg2);
-}
-
-.timeline{
-  position:relative;
-  max-width:900px;
-  margin:auto;
-}
-
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:18px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:var(--line);
-}
-
-.step{
-  position:relative;
-  padding:0 0 45px 60px;
-}
-
-.step:last-child{
-  padding-bottom:0;
-}
-
-.step-dot{
-  position:absolute;
-  left:9px;
-  top:4px;
-  width:19px;
-  height:19px;
-  border-radius:50%;
-  background:var(--accent);
-  border:5px solid var(--bg2);
-  box-shadow:0 0 0 1px var(--accent);
-}
-
-.step h3{
-  font-size:1.5rem;
-  margin-bottom:7px;
-}
-
-.step p{
-  color:var(--muted);
-}
-
-/* ================= MANIFESTO ================= */
-
-.manifesto{
-  background:var(--bg);
-}
-
-.manifesto-intro{
-  max-width:800px;
-  margin-bottom:60px;
-}
-
-.manifesto-intro p{
-  color:var(--muted);
-  font-size:1.1rem;
-}
-
-.manifesto-section{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:42px;
-  margin-bottom:16px;
-}
-
-.manifesto-section h3{
-  font-size:1.8rem;
-  letter-spacing:-.04em;
-  margin-bottom:20px;
-}
-
-.manifesto-section p{
-  color:var(--muted);
-  margin-bottom:18px;
-}
-
-.manifesto-section ul{
-  color:var(--muted);
-  padding-left:23px;
-  margin-bottom:20px;
-}
-
-.manifesto-section li{
-  margin:5px 0;
-}
-
-.manifesto-quote{
-  margin:25px 0;
-  padding:22px;
-  background:color-mix(in srgb,var(--accent) 12%,var(--card));
-  border-radius:15px;
-  color:var(--accent);
-  font-weight:750;
-}
-
-/* ================= VISION ================= */
-
-.vision{
-  background:var(--dark);
-  color:white;
-  text-align:center;
-}
-
-.vision .section-number{
-  color:var(--accent2);
-}
-
-.vision h2{
-  max-width:900px;
-  margin:0 auto 30px;
-}
-
-.vision p{
-  max-width:720px;
-  margin:auto;
-  color:#aebdb3;
-}
-
-.vision-line{
-  margin:65px auto 0;
-  max-width:850px;
-  font-size:clamp(2rem,5vw,4.2rem);
-  line-height:1.05;
-  letter-spacing:-.06em;
-}
-
-.vision-line span{
-  color:var(--accent2);
-}
-
-/* ================= DECLARATION ================= */
-
-.declaration{
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  text-align:center;
-}
-
-.declaration-inner{
-  max-width:900px;
-  margin:auto;
-}
-
-.declaration p{
-  color:var(--muted);
-  max-width:700px;
-  margin:0 auto 22px;
-}
-
-.final{
-  margin-top:60px;
-  font-size:clamp(2.3rem,6vw,5rem);
-  line-height:.95;
-  font-weight:900;
-  letter-spacing:-.07em;
-}
-
-.final div:nth-child(2){
-  color:var(--accent);
-}
-
-.signature{
-  margin-top:45px;
-  color:var(--muted);
-  font-size:.9rem;
-}
-
-/* ================= SHARE ================= */
-
-.share-area{
-  margin-top:55px;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.copy-message{
-  opacity:0;
-  transition:.3s;
-  color:var(--accent);
-  font-size:.85rem;
-}
-
-.copy-message.show{
-  opacity:1;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  padding:45px 0;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:.83rem;
-}
-
-.footer-content{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-/* ================= REVEAL ================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:
-    opacity .7s ease,
-    transform .7s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:800px){
-
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:76px;
-    left:0;
-    right:0;
-    background:var(--bg);
-    border-bottom:1px solid var(--line);
-    padding:22px 6%;
-    flex-direction:column;
-    gap:17px;
-  }
-
-  .nav-links.active{
-    display:flex;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .philosophy-grid,
-  .principles-grid{
-    grid-template-columns:1fr;
-  }
-
-  .globe{
-    width:220px;
-    height:220px;
-    right:-70px;
-    top:15%;
-  }
-
-  section{
-    padding:85px 0;
-  }
-
-  .manifesto-section{
-    padding:28px;
-  }
-
-  .footer-content{
-    flex-direction:column;
-  }
-}
-
-@media(max-width:500px){
-
-  h1{
-    font-size:4rem;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-  }
-
-  .btn{
-    width:100%;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="One-World Humanism — One Humanity. One World. One Future.">
+  <meta name="theme-color" content="#0b1020">
+  <title>One-World Humanism | One Humanity. One World. One Future.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
+  <!-- Background -->
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-mark">◉</span>
+      <span>ONE-WORLD<br><small>HUMANISM</small></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#beliefs">Beliefs</a>
+      <a href="#principles">Principles</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#vision">Vision</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      ☀
+    </button>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div class="hero-content reveal">
+        <div class="eyebrow">A HUMAN-CENTERED PHILOSOPHY</div>
+
+        <h1>
+          ONE HUMANITY.<br>
+          <span>ONE WORLD.</span><br>
+          ONE FUTURE.
+        </h1>
+
+        <p class="hero-subtitle">
+          A vision for a civilization built upon human dignity,
+          individual freedom, peace, knowledge, cooperation and progress.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#manifesto" class="btn btn-primary">Read the Manifesto</a>
+          <a href="#principles" class="btn btn-secondary">Explore the Principles</a>
+        </div>
+      </div>
+
+      <div class="hero-orbit reveal">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
+        <div class="earth">
+          <div class="earth-grid"></div>
+          <span>🌍</span>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>SCROLL TO EXPLORE</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+
+    <!-- CORE BELIEF -->
+    <section class="belief section" id="beliefs">
+      <div class="container narrow reveal">
+        <div class="section-label">THE CORE IDEA</div>
+
+        <h2>Humanity is one.</h2>
+
+        <p class="large-text">
+          Before we are citizens of nations, members of communities,
+          followers of traditions, or people of different backgrounds,
+          we are human beings.
+        </p>
+
+        <div class="quote-box">
+          <span class="quote-mark">“</span>
+          <p>
+            One humanity. One world. Freedom for every individual.
+            Welfare of all humanity.
+          </p>
+        </div>
+
+        <p>
+          One-World Humanism seeks a future in which unnecessary divisions
+          gradually give way to cooperation, freedom, equality of dignity,
+          scientific progress and a shared human civilization.
+        </p>
+      </div>
+    </section>
+
 
-<header>
-<div class="container">
-
-<nav>
-
-<a href="#home" class="logo">
-ONE-WORLD <span>HUMANISM</span>
-</a>
-
-<div class="nav-right">
-
-<ul class="nav-links" id="navLinks">
-<li><a href="#philosophy">Philosophy</a></li>
-<li><a href="#principles">Principles</a></li>
-<li><a href="#path">Our Path</a></li>
-<li><a href="#manifesto">Manifesto</a></li>
-<li><a href="#vision">Vision</a></li>
-</ul>
-
-<button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-☾
-</button>
-
-<button class="menu-btn" id="menuBtn" aria-label="Open menu">
-☰
-</button>
-
-</div>
-
-</nav>
-
-</div>
-</header>
-
-
-<!-- ================= HERO ================= -->
-
-<main>
-
-<section class="hero" id="home">
-
-<div class="globe"></div>
-
-<div class="container">
-
-<div class="hero-content reveal">
-
-<div class="eyebrow">
-A Human-Centered Philosophy
-</div>
-
-<h1>
-One World.<br>
-<span>One Humanity.</span>
-</h1>
-
-<p class="hero-subtitle">
-A vision for a civilization founded upon human dignity,
-individual freedom, peace, knowledge, cooperation
-and continuous progress.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#manifesto" class="btn btn-primary">
-Read the Manifesto
-</a>
-
-<a href="#principles" class="btn btn-secondary">
-Explore the Principles
-</a>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- ================= PHILOSOPHY ================= -->
-
-<section class="philosophy" id="philosophy">
-
-<div class="container">
-
-<div class="philosophy-grid">
-
-<div class="reveal">
-
-<div class="section-number">
-01 / Philosophy
-</div>
-
-<h2>
-Humanity before division.
-</h2>
-
-<p>
-Before we are citizens of nations, members of communities,
-or followers of traditions, we are human beings.
-</p>
-
-<br>
-
-<p>
-One-World Humanism imagines a future where humanity
-gradually moves beyond unnecessary divisions and builds
-a civilization centered on human dignity, freedom and progress.
-</p>
-
-</div>
-
-<div class="big-quote reveal">
-“One humanity.<br>
-One world.<br>
-Freedom for every individual.<br>
-Welfare of all humanity.”
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- ================= PRINCIPLES ================= -->
-
-<section id="principles">
-
-<div class="container">
-
-<div class="section-heading reveal">
-
-<div class="section-number">
-02 / Principles
-</div>
-
-<h2>
-Ten principles for one humanity.
-</h2>
-
-<p>
-The foundation of One-World Humanism is built around
-human dignity, freedom, peace, knowledge and progress.
-</p>
-
-</div>
-
-
-<div class="principles-grid">
-
-<div class="card reveal">
-<div class="card-number">01</div>
-<h3>One Humanity</h3>
-<p>
-Every person is a human being first—before being a member
-of any country, caste or community.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">02</div>
-<h3>A Borderless World</h3>
-<p>
-Humanity should gradually move toward greater freedom
-to travel, study, work and live across the world.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">03</div>
-<h3>Peace Above War</h3>
-<p>
-Political disputes should increasingly be resolved
-through diplomacy, cooperation and law.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">04</div>
-<h3>Freedom of the Individual</h3>
-<p>
-Every person should have the freedom to shape their
-own life while respecting the rights of others.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">05</div>
-<h3>Equality of Human Dignity</h3>
-<p>
-Birth, caste, nationality, religion, wealth or background
-should never determine human worth.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">06</div>
-<h3>No Extreme Poverty</h3>
-<p>
-Every person should have access to basic necessities
-and the opportunity to build a meaningful life.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">07</div>
-<h3>Education for Everyone</h3>
-<p>
-Education should create independent thinkers,
-not merely prepare people for employment.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">08</div>
-<h3>Science & Progress</h3>
-<p>
-Science, technology and critical thinking should
-expand humanity's ability to solve problems.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">09</div>
-<h3>Humanity + Planet</h3>
-<p>
-Human progress must be balanced with responsibility
-toward Earth and future generations.
-</p>
-</div>
-
-<div class="card reveal">
-<div class="card-number">10</div>
-<h3>Human Advancement</h3>
-<p>
-Every generation should expand humanity's knowledge,
-health, technology, culture and possibilities.
-</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- ================= PATH ================= -->
-
-<section class="path" id="path">
-
-<div class="container">
-
-<div class="section-heading reveal">
-
-<div class="section-number">
-03 / Our Path
-</div>
-
-<h2>
-From nations toward humanity.
-</h2>
-
-<p>
-One-World Humanism does not demand that the world change overnight.
-The transformation is envisioned as a gradual process.
-</p>
-
-</div>
-
-
-<div class="timeline">
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>Today's Nations</h3>
-<p>
-Independent nations continue to exist while protecting
-the rights and dignity of their people.
-</p>
-</div>
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>Global Cooperation</h3>
-<p>
-Nations increasingly cooperate on problems that affect
-all humanity: peace, climate, health, science and technology.
-</p>
-</div>
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>Shared Institutions</h3>
-<p>
-Stronger international institutions develop to address
-problems that no individual nation can solve alone.
-</p>
-</div>
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>Greater Freedom of Movement</h3>
-<p>
-People gradually gain greater freedom to travel,
-study, work and live across borders.
-</p>
-</div>
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>Global Federation</h3>
-<p>
-Nations increasingly cooperate within a democratic
-global framework while preserving cultural diversity.
-</p>
-</div>
-
-<div class="step reveal">
-<div class="step-dot"></div>
-<h3>One Human Civilization</h3>
-<p>
-Humanity increasingly understands itself not as isolated
-groups, but as one interconnected civilization.
-</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- ================= MANIFESTO ================= -->
-
-<section class="manifesto" id="manifesto">
-
-<div class="container">
-
-<div class="manifesto-intro reveal">
-
-<div class="section-number">
-04 / The Manifesto
-</div>
-
-<h2>
-The One-World Humanist Manifesto
-</h2>
-
-<p>
-We do not promise paradise.
-We seek to create a better world—step by step,
-generation by generation.
-</p>
-
-</div>
-
-
-<!-- I -->
-
-<article class="manifesto-section reveal">
-
-<h3>I. One Humanity</h3>
-
-<p>
-There is only one human family.
-</p>
-
-<p>
-No human being is inherently superior or inferior because
-of their birth, nationality, caste, wealth, religion,
-language, gender or social background.
-</p>
-
-<div class="manifesto-quote">
-Human dignity is universal.
-</div>
-
-</article>
-
-
-<!-- II -->
-
-<article class="manifesto-section reveal">
-
-<h3>II. Freedom of the Individual</h3>
-
-<p>
-Every person should have the freedom to shape their own life.
-</p>
-
-<ul>
-<li>Choose their education and career.</li>
-<li>Express their ideas.</li>
-<li>Explore knowledge.</li>
-<li>Pursue their ambitions.</li>
-<li>Create, invent and experiment.</li>
-<li>Form their own worldview.</li>
-<li>Live according to their conscience.</li>
-</ul>
-
-<p>
-But freedom carries responsibility.
-</p>
-
-<div class="manifesto-quote">
-“My freedom ends where another person's equal freedom begins.”
-</div>
-
-</article>
-
-
-<!-- III -->
-
-<article class="manifesto-section reveal">
-
-<h3>III. A World Without Unnecessary Borders</h3>
-
-<p>
-Borders are historical and political creations;
-humanity itself has no natural borders.
-</p>
-
-<p>
-We envision a future in which people can increasingly
-move, study, work, collaborate and live across the world
-without being unnecessarily restricted by nationality.
-</p>
-
-<div class="manifesto-quote">
-International cooperation → easier movement →
-shared institutions → global federation →
-greater political unity.
-</div>
-
-</article>
-
-
-<!-- IV -->
-
-<article class="manifesto-section reveal">
-
-<h3>IV. Peace Above War</h3>
-
-<p>
-War should never be humanity's first answer.
-</p>
-
-<p>
-Nations should increasingly resolve disputes through
-diplomacy, international law, negotiation, institutions
-and peaceful cooperation.
-</p>
-
-<div class="manifesto-quote">
-The greatest victory is preventing humans from becoming
-enemies in the first place.
-</div>
-
-</article>
-
-
-<!-- V -->
-
-<article class="manifesto-section reveal">
-
-<h3>V. Equality of Human Dignity</h3>
-
-<p>
-Equality does not necessarily mean that every human being
-will have the same abilities, interests, achievements or possessions.
-</p>
-
-<p>
-It means that every human being deserves equal fundamental
-dignity and rights.
-</p>
-
-<p>
-Differences between people should enrich civilization—
-not divide humanity into superior and inferior groups.
-</p>
-
-</article>
-
-
-<!-- VI -->
-
-<article class="manifesto-section reveal">
-
-<h3>VI. The End of Extreme Poverty</h3>
-
-<p>
-A civilization capable of reaching the stars should not
-accept a world where people are unable to meet their
-most basic needs.
-</p>
-
-<ul>
-<li>Food</li>
-<li>Clean water</li>
-<li>Shelter</li>
-<li>Education</li>
-<li>Essential healthcare</li>
-<li>Safety</li>
-<li>The opportunity to build a meaningful life</li>
-</ul>
-
-<p>
-We do not demand that everyone possess the same amount
-of wealth. We demand that poverty should never destroy
-a person's basic human potential.
-</p>
-
-</article>
-
-
-<!-- VII -->
-
-<article class="manifesto-section reveal">
-
-<h3>VII. Education as a Human Right</h3>
-
-<p>
-Education should not exist merely to produce workers.
-Its deeper purpose is to produce thinking human beings.
-</p>
-
-<ul>
-<li>Think critically.</li>
-<li>Question assumptions.</li>
-<li>Understand evidence.</li>
-<li>Communicate.</li>
-<li>Create.</li>
-<li>Discover.</li>
-<li>Cooperate.</li>
-<li>Continuously learn.</li>
-</ul>
-
-<div class="manifesto-quote">
-A society that teaches people how to think can continuously progress.
-</div>
-
-</article>
-
-
-<!-- VIII -->
-
-<article class="manifesto-section reveal">
-
-<h3>VIII. Science, Reason & Knowledge</h3>
-
-<p>
-Humanity must remain willing to question itself.
-</p>
-
-<div class="manifesto-quote">
-Evidence over superstition.<br>
-Reason over dogma.<br>
-Curiosity over ignorance.<br>
-Discovery over fear.
-</div>
-
-<p>
-Scientific power must be accompanied by ethical responsibility.
-</p>
-
-</article>
-
-
-<!-- IX -->
-
-<article class="manifesto-section reveal">
-
-<h3>IX. Humanity & The Planet</h3>
-
-<p>
-Earth is the common home of humanity.
-</p>
-
-<p>
-We seek a civilization capable of combining:
-</p>
-
-<div class="manifesto-quote">
-Economic development + technological progress +
-environmental responsibility.
-</div>
-
-<p>
-Humanity should not be forced to choose between progress and nature.
-</p>
-
-</article>
-
-
-<!-- X -->
-
-<article class="manifesto-section reveal">
-
-<h3>X. Economic Freedom & Human Welfare</h3>
-
-<p>
-One-World Humanism does not define itself as exclusively
-capitalist or socialist.
-</p>
-
-<p>
-We judge economic systems by their outcomes for human beings.
-</p>
-
-<ul>
-<li>Innovation</li>
-<li>Entrepreneurship</li>
-<li>Productive competition</li>
-<li>Individual initiative</li>
-<li>Economic opportunity</li>
-<li>Creation of wealth</li>
-</ul>
-
-<div class="manifesto-quote">
-Wealth should be a tool for human flourishing—
-not a measure of human worth.
-</div>
-
-</article>
-
-
-<!-- XI -->
-
-<article class="manifesto-section reveal">
-
-<h3>XI. Democracy & Human Rights</h3>
-
-<p>
-Power must ultimately remain accountable to people.
-Government exists to serve human beings—not the other way around.
-</p>
-
-<ul>
-<li>Freedom of thought</li>
-<li>Freedom of expression</li>
-<li>Equality before the law</li>
-<li>Human rights</li>
-<li>Due process</li>
-<li>Political participation</li>
-<li>Accountability</li>
-</ul>
-
-<p>
-No government, institution, ideology or majority should
-possess unlimited power over the individual.
-</p>
-
-</article>
-
-
-<!-- XII -->
-
-<article class="manifesto-section reveal">
-
-<h3>XII. The Path Toward World Unity</h3>
-
-<p>
-We do not seek to erase cultures.
-</p>
-
-<p>
-Languages, traditions, art, philosophies, cuisines,
-histories and cultures can continue to flourish.
-</p>
-
-<div class="manifesto-quote">
-Unity does not require uniformity.
-</div>
-
-<p>
-Different people can live together as equal members
-of one human civilization.
-</p>
-
-</article>
-
-
-<!-- XIII -->
-
-<article class="manifesto-section reveal">
-
-<h3>XIII. Human Advancement</h3>
-
-<p>
-The purpose of civilization should be more than survival.
-</p>
-
-<p>
-Humanity should seek to understand more, create more,
-discover more and become capable of more.
-</p>
-
-<ul>
-<li>Science</li>
-<li>Medicine</li>
-<li>Technology</li>
-<li>Education</li>
-<li>Space exploration</li>
-<li>Artificial intelligence</li>
-<li>Energy</li>
-<li>Culture</li>
-<li>Philosophy</li>
-<li>Human cooperation</li>
-</ul>
-
-</article>
-
-
-<!-- XIV -->
-
-<article class="manifesto-section reveal">
-
-<h3>XIV. The Individual & Humanity</h3>
-
-<p>
-We reject the idea that the individual and humanity
-must always stand against one another.
-</p>
-
-<div class="manifesto-quote">
-The individual gives humanity creativity.<br>
-Humanity gives the individual opportunity.
-</div>
-
-<p>
-We therefore seek a balance between individual freedom
-and social responsibility.
-</p>
-
-</article>
-
-
-<!-- XV -->
-
-<article class="manifesto-section reveal">
-
-<h3>XV. Our Long-Term Vision</h3>
-
-<p>
-Our ultimate aspiration is a civilization in which:
-</p>
-
-<ul>
-<li>No person is considered inferior because of their birth.</li>
-<li>No child is denied opportunity because of birthplace.</li>
-<li>No human being is forced into extreme poverty.</li>
-<li>War is no longer an ordinary instrument of politics.</li>
-<li>People can move across the world with fewer artificial barriers.</li>
-<li>Knowledge is widely accessible.</li>
-<li>Science and reason guide our understanding.</li>
-<li>Technology expands human possibility.</li>
-<li>Nature is protected for future generations.</li>
-<li>Governments exist to protect human rights and freedom.</li>
-</ul>
-
-<p>
-Humanity increasingly sees itself not as billions of separate
-groups—but as one civilization.
-</p>
-
-</article>
-
-</div>
-</section>
-
-
-<!-- ================= VISION ================= -->
-
-<section class="vision" id="vision">
-
-<div class="container">
-
-<div class="section-number reveal">
-05 / The Ultimate Vision
-</div>
-
-<h2 class="reveal">
-Beyond unnecessary division.
-</h2>
-
-<p class="reveal">
-We do not promise paradise.
-We do not claim that human conflict can disappear completely.
-We do not believe that humanity will become perfect.
-</p>
-
-<div class="vision-line reveal">
-We believe something simpler:
-<br><br>
-<span>Humanity can become better.</span>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= FINAL DECLARATION ================= -->
-
-<section class="declaration">
-
-<div class="container">
-
-<div class="declaration-inner reveal">
-
-<div class="section-number">
-Final Declaration
-</div>
-
-<h2>
-You are human.<br>
-I am human.
-</h2>
-
-<p>
-We share one world.
-</p>
-
-<p>
-Let every generation leave humanity with more knowledge,
-more freedom, greater dignity and greater possibilities
-than the generation before it.
-</p>
-
-<div class="final">
-<div>ONE HUMANITY.</div>
-<div>ONE WORLD.</div>
-<div>ONE FUTURE.</div>
-</div>
-
-<div class="share-area">
-
-<button class="btn btn-primary" id="shareBtn">
-Share This Vision
-</button>
-
-<button class="btn btn-secondary" id="copyBtn">
-Copy Website Link
-</button>
-
-</div>
-
-<div class="copy-message" id="copyMessage">
-Link copied.
-</div>
-
-<div class="signature">
-— The One-World Humanist Manifesto
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-<div class="container">
-
-<div class="footer-content">
-
-<div>
-<strong>One-World Humanism</strong>
-</div>
-
-<div>
-One Humanity · One World · One Future
-</div>
-
-</div>
-
-</div>
-
-</footer>
-
-
-<script>
-
-/* ================= MOBILE MENU ================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-  });
-});
-
-
-/* ================= DARK / LIGHT MODE ================= */
-
-const themeBtn = document.getElementById("themeBtn");
-
-const savedTheme = localStorage.getItem("owh-theme");
-
-if(savedTheme){
-  document.documentElement.setAttribute("data-theme", savedTheme);
-  themeBtn.textContent =
-    savedTheme === "dark" ? "☀" : "☾";
-}
-
-themeBtn.addEventListener("click", () => {
-
-  const current =
-    document.documentElement.getAttribute("data-theme");
-
-  const next = current === "dark" ? "light" : "dark";
-
-  if(next === "dark"){
-    document.documentElement.setAttribute("data-theme","dark");
-    localStorage.setItem("owh-theme","dark");
-    themeBtn.textContent = "☀";
-  }else{
-    document.documentElement.removeAttribute("data-theme");
-    localStorage.setItem("owh-theme","light");
-    themeBtn.textContent = "☾";
-  }
-
-});
-
-
-/* ================= SCROLL REVEAL ================= */
-
-const observer = new IntersectionObserver(
-  entries => {
-
-    entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-
-    });
-
-  },
-  {
-    threshold:.12
-  }
-);
-
-document.querySelectorAll(".reveal").forEach(el => {
-  observer.observe(el);
-});
-
-
-/* ================= SHARE ================= */
-
-const shareBtn = document.getElementById("shareBtn");
-
-shareBtn.addEventListener("click", async () => {
-
-  const shareData = {
-    title:"One-World Humanism",
-    text:"One Humanity. One World. One Future.",
-    url:window.location.href
-  };
-
-  if(navigator.share){
-
-    try{
-      await navigator.share(shareData);
-    }catch(error){
-      // User cancelled sharing.
-    }
-
-  }else{
-
-    await navigator.clipboard.writeText(window.location.href);
-
-    showCopied();
-
-  }
-
-});
-
-
-/* ================= COPY LINK ================= */
-
-const copyBtn = document.getElementById("copyBtn");
-const copyMessage = document.getElementById("copyMessage");
-
-copyBtn.addEventListener("click", async () => {
-
-  try{
-
-    await navigator.clipboard.writeText(window.location.href);
-
-    showCopied();
-
-  }catch(error){
-
-    alert("Copy the website address from your browser.");
-
-  }
-
-});
-
-
-function showCopied(){
-
-  copyMessage.classList.add("show");
-
-  setTimeout(() => {
-    copyMessage.classList.remove("show");
-  },2200);
-
-}
-
-</script>
+    <!-- PRINCIPLES -->
+    <section class="principles section" id="principles">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">THE FOUNDATION</div>
+          <h2>10 Fundamental Principles</h2>
+          <p>
+            The principles that define the philosophy of One-World Humanism.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+
+          <article class="principle-card reveal">
+            <div class="number">01</div>
+            <div class="icon">🌎</div>
+            <h3>One Humanity</h3>
+            <p>
+              Every person is a human being first—before being a member
+              of any country, caste, community or group.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">02</div>
+            <div class="icon">🗺️</div>
+            <h3>A Borderless World</h3>
+            <p>
+              Humanity should gradually move toward greater freedom
+              of movement, study, work and cooperation across borders.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">03</div>
+            <div class="icon">🕊️</div>
+            <h3>Peace Above War</h3>
+            <p>
+              Political conflicts should increasingly be resolved through
+              diplomacy, law, cooperation and peaceful institutions.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">04</div>
+            <div class="icon">🧭</div>
+            <h3>Freedom of the Individual</h3>
+            <p>
+              Every person should have the freedom to shape their own life,
+              provided they respect the equal rights of others.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">05</div>
+            <div class="icon">⚖️</div>
+            <h3>Equality of Human Dignity</h3>
+            <p>
+              No person's fundamental dignity should depend upon their
+              birthplace, caste, wealth, religion, language or background.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">06</div>
+            <div class="icon">🍞</div>
+            <h3>No Extreme Poverty</h3>
+            <p>
+              Every person should have access to basic necessities and
+              the opportunity to build a meaningful life.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">07</div>
+            <div class="icon">🧠</div>
+            <h3>Education for Everyone</h3>
+            <p>
+              Education should develop critical thinking, curiosity,
+              creativity and the ability to question and discover.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">08</div>
+            <div class="icon">🔬</div>
+            <h3>Science & Reason</h3>
+            <p>
+              Evidence, reason, science and curiosity should guide humanity
+              toward a deeper understanding of reality.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">09</div>
+            <div class="icon">🌱</div>
+            <h3>Humanity + Planet</h3>
+            <p>
+              Human progress must be balanced with responsibility toward
+              Earth and future generations.
+            </p>
+          </article>
+
+          <article class="principle-card reveal">
+            <div class="number">10</div>
+            <div class="icon">🚀</div>
+            <h3>Human Advancement</h3>
+            <p>
+              Civilization should continuously expand human knowledge,
+              health, technology, culture and possibilities.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- INDIVIDUAL FREEDOM -->
+    <section class="split-section section">
+      <div class="container split">
+
+        <div class="split-content reveal">
+          <div class="section-label">FREEDOM & RESPONSIBILITY</div>
+          <h2>Freedom is not isolation.</h2>
+
+          <p>
+            A free human being should have the opportunity to choose
+            their education, career, ideas, ambitions, place of residence
+            and way of life.
+          </p>
+
+          <p>
+            But freedom carries responsibility. One person's liberty
+            cannot become another person's oppression.
+          </p>
+
+          <div class="highlight">
+            <strong>“My freedom ends where another person's equal freedom begins.”</strong>
+          </div>
+        </div>
+
+        <div class="freedom-visual reveal">
+          <div class="freedom-circle">
+            <div class="freedom-inner">
+              <span>FREEDOM</span>
+              <small>WITH<br>RESPONSIBILITY</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MANIFESTO -->
+    <section class="manifesto section" id="manifesto">
+      <div class="container manifesto-container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">THE DOCUMENT</div>
+          <h2>The One-World Humanist Manifesto</h2>
+          <p>
+            A declaration of the principles and aspirations of this philosophy.
+          </p>
+        </div>
+
+        <article class="manifesto-paper reveal">
+
+          <div class="manifesto-header">
+            <span>THE ONE-WORLD HUMANIST MANIFESTO</span>
+            <div class="manifesto-line"></div>
+            <strong>ONE HUMANITY. ONE WORLD. ONE FUTURE.</strong>
+          </div>
+
+          <h3>Preamble</h3>
+
+          <p>
+            We believe that before we are citizens of nations, members of
+            communities, followers of traditions, or people of different
+            backgrounds, we are human beings.
+          </p>
+
+          <p>
+            Humanity has divided itself by borders, caste, race, religion,
+            wealth, nationality, language and countless other identities.
+            These identities may shape our cultures and experiences, but
+            they should never determine the value or dignity of a human life.
+          </p>
+
+          <p>
+            We envision a future in which humanity gradually moves beyond
+            unnecessary divisions and builds a civilization founded upon
+            human dignity, individual freedom, peace, knowledge,
+            cooperation and progress.
+          </p>
+
+          <p>
+            We do not claim that a perfect world can be created overnight.
+            We seek to create a better world—step by step,
+            generation by generation.
+          </p>
+
+          <div class="manifesto-divider"></div>
+
+          <h3>I. ONE HUMANITY</h3>
+
+          <p>
+            There is only one human family.
+          </p>
+
+          <p>
+            No human being is inherently superior or inferior because of
+            their birth, nationality, caste, wealth, religion, language,
+            gender or social background.
+          </p>
+
+          <p>
+            Human dignity is universal.
+          </p>
+
+          <h3>II. FREEDOM OF THE INDIVIDUAL</h3>
+
+          <p>
+            Every person should have the freedom to shape their own life.
+            A free human being should have the opportunity to choose their
+            education, career, ideas, ambitions and way of living.
+          </p>
+
+          <p>
+            But freedom carries responsibility. My freedom cannot become
+            another person's oppression.
+          </p>
+
+          <h3>III. A WORLD WITHOUT UNNECESSARY BORDERS</h3>
+
+          <p>
+            Borders are historical and political creations; humanity
+            itself has no natural borders.
+          </p>
+
+          <p>
+            We envision a future in which people can increasingly move,
+            study, work, collaborate and live across the world without
+            being unnecessarily restricted by nationality.
+          </p>
+
+          <h3>IV. PEACE ABOVE WAR</h3>
+
+          <p>
+            War should never be humanity's first answer.
+          </p>
+
+          <p>
+            Nations should increasingly resolve disputes through diplomacy,
+            international law, negotiation, institutions and peaceful
+            cooperation.
+          </p>
+
+          <h3>V. EQUALITY OF HUMAN DIGNITY</h3>
+
+          <p>
+            Equality does not necessarily mean that every human being will
+            have the same abilities, interests, achievements or possessions.
+            It means that every human being deserves equal fundamental
+            dignity and rights.
+          </p>
+
+          <h3>VI. THE END OF EXTREME POVERTY</h3>
+
+          <p>
+            A civilization capable of reaching the stars should not accept
+            a world where people are unable to meet their most basic needs.
+          </p>
+
+          <p>
+            Every human being should have reasonable access to food,
+            clean water, shelter, education, essential healthcare and safety.
+          </p>
+
+          <h3>VII. EDUCATION AS A HUMAN RIGHT</h3>
+
+          <p>
+            Education should not exist merely to produce workers.
+            Its deeper purpose is to produce thinking human beings.
+          </p>
+
+          <p>
+            Education should teach people how to think critically,
+            question assumptions, understand evidence, communicate,
+            create, discover and continuously learn.
+          </p>
+
+          <h3>VIII. SCIENCE, REASON AND KNOWLEDGE</h3>
+
+          <p>
+            Humanity must remain willing to question itself.
+            We believe in evidence over unsupported claims, reason over
+            dogma, curiosity over ignorance and discovery over fear.
+          </p>
+
+          <h3>IX. HUMANITY AND THE PLANET</h3>
+
+          <p>
+            Earth is the common home of humanity. Economic and technological
+            development must therefore consider the generations that come
+            after us.
+          </p>
+
+          <h3>X. HUMAN ADVANCEMENT</h3>
+
+          <p>
+            The purpose of civilization should be more than survival.
+            Humanity should seek to understand more, create more,
+            discover more and become capable of more.
+          </p>
+
+          <div class="final-declaration">
+            <span>THE FINAL DECLARATION</span>
+
+            <p>
+              We do not promise paradise.
+            </p>
+
+            <p>
+              We do not claim that human conflict can disappear completely.
+            </p>
+
+            <p>
+              We believe something simpler:
+            </p>
+
+            <strong>Humanity can become better.</strong>
+
+            <div class="final-motto">
+              ONE HUMANITY.<br>
+              ONE WORLD.<br>
+              ONE FUTURE.
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+
+    <!-- GOVERNANCE -->
+    <section class="governance section">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">A POSSIBLE PATH</div>
+          <h2>Toward Global Unity</h2>
+          <p>
+            Unity does not require the immediate disappearance of nations.
+            Change can happen gradually.
+          </p>
+        </div>
+
+        <div class="timeline reveal">
+
+          <div class="timeline-item">
+            <span class="timeline-number">01</span>
+            <h3>Today's Nations</h3>
+            <p>Independent states cooperating within the existing world system.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-number">02</span>
+            <h3>Global Cooperation</h3>
+            <p>Stronger international institutions and cooperation on shared challenges.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-number">03</span>
+            <h3>Free Movement</h3>
+            <p>Gradually expanding the ability of people to study, work and live across borders.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-number">04</span>
+            <h3>Global Federation</h3>
+            <p>A stronger framework for shared global governance while preserving local cultures.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-number">05</span>
+            <h3>Greater Political Unity</h3>
+            <p>A possible future of increasingly unified institutions serving humanity as a whole.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ECONOMY -->
+    <section class="economy section">
+      <div class="container split">
+
+        <div class="economy-visual reveal">
+          <div class="economic-wheel">
+            <span class="wheel-center">HUMAN<br>FLOURISHING</span>
+            <span class="wheel-item wheel-one">INNOVATION</span>
+            <span class="wheel-item wheel-two">FREEDOM</span>
+            <span class="wheel-item wheel-three">OPPORTUNITY</span>
+            <span class="wheel-item wheel-four">WELFARE</span>
+          </div>
+        </div>
+
+        <div class="split-content reveal">
+          <div class="section-label">ECONOMIC PHILOSOPHY</div>
+          <h2>People before systems.</h2>
+
+          <p>
+            One-World Humanism is not necessarily capitalist or socialist.
+            It evaluates economic systems by how well they promote human
+            freedom, innovation, opportunity and welfare.
+          </p>
+
+          <div class="check-list">
+            <div>✓ Innovation and entrepreneurship</div>
+            <div>✓ Economic opportunity</div>
+            <div>✓ Productive competition</div>
+            <div>✓ Individual initiative</div>
+            <div>✓ Protection from extreme deprivation</div>
+            <div>✓ Access to basic necessities</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- VISION -->
+    <section class="vision section" id="vision">
+      <div class="container vision-container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">THE LONG-TERM VISION</div>
+          <h2>Imagine the future.</h2>
+        </div>
+
+        <div class="vision-statement reveal">
+          <p>
+            Imagine a world where a child's birthplace does not determine
+            their destiny.
+          </p>
+
+          <p>
+            A world where people can move, learn, create and collaborate
+            across the planet.
+          </p>
+
+          <p>
+            A world where war is no longer considered an ordinary instrument
+            of politics.
+          </p>
+
+          <p>
+            A world where knowledge is widely accessible and science is
+            used to expand human possibility.
+          </p>
+
+          <p>
+            A world where cultures remain diverse while humanity becomes
+            increasingly united.
+          </p>
+
+          <div class="vision-question">
+            <span>And if someone asks:</span>
+            <strong>“Where are you from?”</strong>
+            <em>“I am human.”</em>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="faq section" id="faq">
+      <div class="container faq-container">
+
+        <div class="section-heading reveal">
+          <div class="section-label">QUESTIONS</div>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Is One-World Humanism a religion?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. It is a philosophical and political vision centered
+                on human dignity, freedom, cooperation, reason and progress.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Does it mean abolishing every country immediately?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. The proposed approach is gradual: stronger cooperation,
+                greater movement, shared institutions and potentially deeper
+                political integration over generations.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Is it capitalism or socialism?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                It is not defined by one economic system. The principle is
+                to support systems that encourage freedom, innovation,
+                opportunity and human welfare.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Does unity mean everyone must have the same culture?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Unity does not require uniformity. Different languages,
+                cultures, traditions and philosophies can continue to flourish
+                within a shared human civilization.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question">
+              Is the goal to create a perfect world?
+              <span>+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The philosophy does not promise perfection. Its goal is
+                continuous improvement: making humanity freer, more peaceful,
+                more knowledgeable and more capable generation by generation.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="final-cta section">
+      <div class="container final-cta-content reveal">
+
+        <div class="section-label">THE IDEA</div>
+
+        <h2>
+          Different people.<br>
+          One humanity.
+        </h2>
+
+        <p>
+          We do not have to become the same to belong to the same future.
+        </p>
+
+        <a href="#manifesto" class="btn btn-primary">
+          Return to the Manifesto
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">◉</span>
+          <span>ONE-WORLD<br><small>HUMANISM</small></span>
+        </div>
+
+        <p>
+          A vision for one human civilization.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#principles">Principles</a>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#vision">Vision</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> One-World Humanism</p>
+        <p>One Humanity. One World. One Future.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
